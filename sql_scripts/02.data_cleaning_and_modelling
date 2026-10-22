@@ -1,0 +1,57 @@
+create table nike_sales_cleaned as
+select
+	"Order_ID",
+	"Gender_Category",
+	"Product_Name",
+	"Sales_Channel",
+	ABS("Profit") as clean_profit,
+	case
+		when "Order_Date" is null or "Order_Date" = '' then null
+		when "Order_Date" like '____/__/__'
+			then TO_DATE("Order_Date", 'YYYY/MM/DD')
+		when "Order_Date" like '__-__-____'
+			then TO_DATE("Order_Date", 'DD-MM-YYYY')
+		else cast("Order_Date" as DATE)
+	end as clean_order_date,
+	case
+		when "Size" in ('6','7','8','9','10','11','12') then 'US ' || "Size"
+		when "Size" in ('M', 'L', 'XL') then "Size"
+		else null
+	end as clean_size,
+	ABS("Units_Sold") AS clean_units_sold,
+	abs("Revenue") as clean_revenue,
+	abs("MRP") as clean_mrp,
+	case
+		when "Region" in ('Hyd','hyderbad','Hyderabad') then 'Hyderabad'
+		when "Region" in ('bengaluru','Bangalore') then 'Bangalore'
+		else "Region"
+	end as clean_region
+from nike_sales_uncleaned;create table nike_sales_cleaned as
+select
+	"Order_ID",
+	"Gender_Category",
+	"Product_Name",
+	"Sales_Channel",
+	ABS("Profit") as clean_profit,
+	case
+		when "Order_Date" is null or "Order_Date" = '' then null
+		when "Order_Date" like '____/__/__'
+			then TO_DATE("Order_Date", 'YYYY/MM/DD')
+		when "Order_Date" like '__-__-____'
+			then TO_DATE("Order_Date", 'DD-MM-YYYY')
+		else cast("Order_Date" as DATE)
+	end as clean_order_date,
+	case
+		when "Size" in ('6','7','8','9','10','11','12') then 'US ' || "Size"
+		when "Size" in ('M', 'L', 'XL') then "Size"
+		else null
+	end as clean_size,
+	ABS("Units_Sold") AS clean_units_sold,
+	abs("Revenue") as clean_revenue,
+	abs("MRP") as clean_mrp,
+	case
+		when "Region" in ('Hyd','hyderbad','Hyderabad') then 'Hyderabad'
+		when "Region" in ('bengaluru','Bangalore') then 'Bangalore'
+		else "Region"
+	end as clean_region
+from nike_sales_uncleaned;
