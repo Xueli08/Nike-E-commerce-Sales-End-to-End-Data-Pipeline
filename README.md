@@ -27,6 +27,6 @@ The backend SQL queries (`02_business_analytics.sql`) and frontend Power BI dash
 ![Dashboard Preview](assets/dashboard_demo.gif)
 
 ## 🚀 How to Run the Project
-1. Execute `01_data_cleaning_and_modeling.sql` in your PostgreSQL environment to build the schema and insert the cleaned data.
-2. Run `02_business_analytics.sql` to test the business logic and verify the outputs.
+1. Execute `01_data_analysis` in your PostgreSQL environment to build the schema and insert the cleaned data.
+2. Run `02_data_cleaning_and_modelling` to test the business logic and verify the outputs.
 3. Open `Nike_Sales_Analytics.pbix` in Power BI Desktop to interact with the frontend visualizations.
